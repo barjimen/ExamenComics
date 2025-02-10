@@ -1,0 +1,48 @@
+﻿@model List<Comics>
+@{
+	List<string> nombres = ViewData["NOMBRE"] as List<string>;
+}
+
+<h1>Buscador detalles comics</h1>
+<a asp-controller="Comics" asp-action="Index" asp-area="">
+	Go back
+</a>
+
+<form method="post">
+	<select name="nombre" class="form-control">
+		@foreach(string nom in nombres)
+		{
+			<option value="@nom">@nom</option>
+		}
+	</select>
+	<button>
+		Buscar
+	</button>
+	</form>
+	@if(Model != null)
+	{
+
+	<table class="table table-dark">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Descripcion</th>
+				<th>Imagen</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (Comics comics in Model)
+			{
+				<tr>
+					<td>@comics.idComic</td>
+					<td>@comics.Nombre</td>
+					<td>@comics.Descripcion</td>
+					<td>
+						<img src="@comics.Imagen" style="width:150px"/>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	}

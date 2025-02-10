@@ -1,0 +1,22 @@
+﻿@model List<Comics>
+
+<h1>Comics SQL</h1>
+<a asp-action="Create" asp-controller="Comics" asp-area="">
+	New Comic
+</a>
+<div>
+	@foreach (var comic in Model)
+	{
+		<div class="row">
+		<div class="card shadow-lg mb-4">
+			<div class="card-img">
+				<img src="@comic.Imagen" class="card-img-top" style="width:150px"/>
+			</div>
+			<div class="card-body">
+				<h3 class="card-title">@comic.Nombre</h3>
+				<p class="card-subtitle">@comic.Descripcion</p>
+			</div>
+		</div>
+		</div>
+	}
+</div>
